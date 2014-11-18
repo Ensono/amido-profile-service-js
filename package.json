@@ -1,6 +1,6 @@
 {
-  "name": "AmidoProfileService",
-  "version": "1.0.0",
+  "name": "amido-profile-service",
+  "version": "1.0.1",
   "description": "Amido Profile Service JavaScript SDK",
   "main": "./index.js",
   "keywords": [
@@ -58,7 +58,7 @@
     "hogan.js": "~3.0.2"
   },
   "browserify-shim": {
-      "jquery": "global:jQuery",
-      "auth0-lock": "global:Auth0Lock"
+    "jquery": "global:jQuery",
+    "auth0-lock": "global:Auth0Lock"
   }
 }
