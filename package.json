@@ -22,7 +22,8 @@
     "trim": "0.0.1",
     "underscore": "~1.5.2",
     "jquery": "~2.1.1",
-    "through": "~2.3.4"
+    "through": "~2.3.4",
+    "q": "~1.0.1"
   },
   "devDependencies": {
     "brfs": "0.0.8",
