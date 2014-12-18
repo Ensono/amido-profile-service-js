@@ -57,7 +57,7 @@ AmidoProfileService.prototype = ocreate(EventEmitter.prototype);
 AmidoProfileService.prototype.createProfile = function (userId, realm, delegateToken, profile) {
     var deferred = Q.defer();
 
-    this.api.post.call(this, this.urls.createProfile(user_id, realm), profile, function (error, profile) {
+    this.api.post.call(this, this.urls.createProfile(userId, realm), profile, function (error, profile) {
         if (error) {
             deferred.reject(new Error(error));
         } else {
@@ -79,7 +79,7 @@ AmidoProfileService.prototype.createProfile = function (userId, realm, delegateT
 AmidoProfileService.prototype.updateProfile = function (userId, realm, delegateToken, profile) {
     var deferred = Q.defer();
 
-    this.api.put.call(this, this.urls.createProfile(user_id, realm), profile, function (error, profile) {
+    this.api.put.call(this, this.urls.createProfile(userId, realm), profile, function (error, profile) {
         if (error) {
             deferred.reject(new Error(error));
         } else {
@@ -129,6 +129,27 @@ AmidoProfileService.prototype.getProfile = function (userId, realm, delegateToke
         } else {
             delete profile.path;
             deferred.resolve(profile);
+        }
+    }, delegateToken);
+
+    return deferred.promise;
+};
+
+/**
+ * Is a profile complete for a given user
+ * @param userId - the user's ID
+ * @param realm - the realm to create the profile
+ * @param delegateToken - the user's access token to authorize with the API
+ * @return {Promise} - resolved with the result object
+ */
+AmidoProfileService.prototype.isProfileComplete = function (userId, realm, delegateToken) {
+    var deferred = Q.defer();
+
+    this.api.get.call(this, this.urls.isProfileComplete(userId, realm), function (error, result) {
+        if (error) {
+            deferred.reject(new Error(error));
+        } else {
+            deferred.resolve(result);
         }
     }, delegateToken);
 

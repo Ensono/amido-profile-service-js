@@ -141,7 +141,8 @@ module.exports = function (grunt) {
                 bucket:          "amido-profile-service",
                 uploadConcurrency: 5,
                 params: {
-                    CacheControl: 'public, max-age=300'
+                    CacheControl: 'public, max-age=300',
+                    ContentEncoding: 'gzip' // applies to all the files!
                 },
                 region: 'eu-west-1'
             },
@@ -159,7 +160,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd:    'release/',
+                        cwd:    'release-gzip/',
                         src:    ['**'],
                         dest:   'js/'
                     }
