@@ -123,6 +123,17 @@ module.exports = function (grunt) {
                 }
             }
         },
+        compress: {
+            main: {
+                options: {
+                    mode: 'gzip'
+                },
+                expand: true,
+                cwd: 'release/',
+                src: ['**/*'],
+                dest: 'release-gzip/'
+            }
+        },
         aws_s3: {
             options: {
                 accessKeyId:     "AKIAJOTIG6ZUOUSPQYIQ",
@@ -214,5 +225,5 @@ module.exports = function (grunt) {
     grunt.registerTask('integration',   ['exec:test-inception', 'exec:test-integration']);
     grunt.registerTask('phantom',       ['build', 'exec:test-inception', 'exec:test-phantom']);
 
-    grunt.registerTask('cdn',           ['build-release', 'copy:release', 'aws_s3:clean', 'aws_s3:publish']);
+    grunt.registerTask('cdn',           ['build-release', 'copy:release', 'compress', 'aws_s3:clean', 'aws_s3:publish']);
 };
