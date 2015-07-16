@@ -11,8 +11,3 @@ The Amido Profile Service JavaScript SDK is a front end library for use with the
     };
   
     var profileService = new AmidoProfileService(profileOptions);
-
-
-### Create a profile
-
-To create a profile for a realm,
